@@ -1,3 +1,4 @@
+"use server";
 export const CompareLetter = (
   base: string[],
   value: string,
