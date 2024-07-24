@@ -3,9 +3,11 @@ export const CompareLetter = (
   value: string,
   winningWords: string[]
 ): boolean => {
+  console.log("winningWords", winningWords);
+  console.log("value", value);
   // Convertir le tableau base en une seule chaîne
   const baseString = base.join("").toUpperCase(); // Convertir en majuscules
-
+  // Convertir en majuscules
   // Compter les occurrences des lettres dans base
   const baseCount = baseString.split("").reduce((acc, char) => {
     acc[char] = (acc[char] || 0) + 1;

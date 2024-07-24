@@ -60,7 +60,7 @@ export function TapWord() {
     console.log("compare", r);
     if (r) {
       // ajoute le mot au local storage
-      addWinningWord(values.word);
+      addWinningWord(values.word.toUpperCase());
     }
     form.reset();
   }
