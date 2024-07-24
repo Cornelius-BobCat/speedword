@@ -5,7 +5,6 @@ import { useNumberStore } from "@/store/store";
 import { useStartStore } from "@/store/store";
 import { useWinningWordsStore } from "@/store/store";
 import { usePseudoStore } from "@/store/store";
-import { Save } from "lucide-react";
 import { useEffect } from "react";
 
 export const Decompte = () => {
