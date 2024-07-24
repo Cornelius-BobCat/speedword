@@ -28,7 +28,7 @@ export function TapWord() {
         async (word) => {
           // Appeler l'API pour vérifier si le mot est valide
           const response = await fetch(
-            `${baseUrl}/api/verif?word=${encodeURIComponent(word)}`
+            `/api/verif?word=${encodeURIComponent(word)}`
           );
           const data = await response.json();
 
