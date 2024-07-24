@@ -10,6 +10,7 @@ export const GetScore = async () => {
       },
       take: 10, // Limiter à 10 résultats
     });
+    console.log("Top scores:", topScores);
     return topScores;
   } catch (error) {
     console.error(
