@@ -3,6 +3,8 @@
 import { useStartStore } from "@/store/store";
 import { Input } from "./ui/input";
 import { usePseudoStore } from "@/store/store";
+import { useEffect, useState } from "react";
+import { GetScore } from "@/app/actions/getscore.action";
 
 export const Launch = () => {
   const { start, toggleStart } = useStartStore();
@@ -14,6 +16,14 @@ export const Launch = () => {
       alert("Please enter a pseudo");
     }
   };
+  const [scoreRes, setScoreRes] = useState<any[]>([]);
+  useEffect(() => {
+    const get = async () => {
+      const res = await GetScore();
+      setScoreRes(res);
+    };
+    get();
+  }, []);
   return (
     <div className="flex h-screen w-full items-center justify-center text-center flex-col">
       <Input
@@ -27,6 +37,13 @@ export const Launch = () => {
         className="rounded-lg bg-pink-500 hover:bg-pink-900 text-7xl font-extrabold text-white p-4 text-center hover:cursor-pointer"
       >
         LAUNCH
+      </div>
+      <div className="">
+        {scoreRes.map((score, index) => (
+          <div key={index}>
+            {score.pseudo} - {score.score}
+          </div>
+        ))}
       </div>
     </div>
   );
