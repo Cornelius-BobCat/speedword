@@ -1,6 +1,7 @@
 // Decompte.tsx
 "use client";
 
+import { Save } from "@/app/actions/save.action";
 import { useNumberStore } from "@/store/store";
 import { useStartStore } from "@/store/store";
 import { useWinningWordsStore } from "@/store/store";
@@ -13,18 +14,11 @@ export const Decompte = () => {
   const { winningWords, resetWinningWords } = useWinningWordsStore();
   const { pseudo } = usePseudoStore();
   useEffect(() => {
-    const saveLog = async () => {
-      try {
-        fetch(`/api/save?pseudo=${pseudo}&score=${winningWords.length}`);
-      } catch (e) {
-        console.log(e);
-      }
-    };
     if (value <= 0) {
       toggleStart();
       resetWinningWords();
       setValue(30.0);
-      saveLog();
+      Save(pseudo, winningWords.length);
     }
   }, [value, toggleStart, setValue, resetWinningWords]);
 
