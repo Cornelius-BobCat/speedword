@@ -17,7 +17,7 @@ export const Decompte = () => {
     if (value <= 0) {
       toggleStart();
       resetWinningWords();
-      setValue(30.0);
+      setValue(60.0);
       Save(pseudo, winningWords.length);
     }
   }, [value, toggleStart, setValue, resetWinningWords]);

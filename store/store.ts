@@ -18,7 +18,7 @@ type NumberStore = {
 };
 
 export const useNumberStore = create<NumberStore>((set) => ({
-  value: 30.0, // État initial, par exemple 0
+  value: 60.0, // État initial, par exemple 0
   setValue: (newValue: number) => set({ value: newValue }), // Met à jour la valeur
   increment: () => set((state) => ({ value: state.value + 0.1 })), // Incrémente la valeur de 1
   decrement: () => set((state) => ({ value: state.value - 0.1 })), // Décrémente la valeur de 1
