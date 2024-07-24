@@ -1,4 +1,4 @@
-export const createletter = () => {
+export const Createletter = () => {
   const lettersBase = [
     "YNELUG",
     "NAVDEZ",

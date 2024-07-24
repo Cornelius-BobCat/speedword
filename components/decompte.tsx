@@ -3,17 +3,31 @@
 
 import { useNumberStore } from "@/store/store";
 import { useStartStore } from "@/store/store";
-import { use, useEffect } from "react";
+import { useWinningWordsStore } from "@/store/store";
+import { usePseudoStore } from "@/store/store";
+import { Save } from "lucide-react";
+import { useEffect } from "react";
 
 export const Decompte = () => {
   const { value, decrement, setValue } = useNumberStore();
   const { start, toggleStart } = useStartStore();
+  const { winningWords, resetWinningWords } = useWinningWordsStore();
+  const { pseudo } = usePseudoStore();
   useEffect(() => {
+    const saveLog = async () => {
+      try {
+        fetch(`/api/save?pseudo=${pseudo}&score=${winningWords.length}`);
+      } catch (e) {
+        console.log(e);
+      }
+    };
     if (value <= 0) {
       toggleStart();
-      setValue(20.0);
+      resetWinningWords();
+      setValue(30.0);
+      saveLog();
     }
-  }, [value, toggleStart, setValue]);
+  }, [value, toggleStart, setValue, resetWinningWords]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;

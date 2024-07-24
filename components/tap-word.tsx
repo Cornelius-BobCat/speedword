@@ -3,7 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { useLettersStore } from "@/store/store";
+import { useWinningWordsStore } from "@/store/store";
 import {
   Form,
   FormControl,
@@ -14,9 +15,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { CompareLetter } from "@/app/actions/compare-letter.action";
+import Image from "next/image";
 
 export function TapWord() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const { lettersBase } = useLettersStore();
+  const { winningWords, addWinningWord } = useWinningWordsStore();
   // Schéma Zod pour la validation
   const formSchema = z.object({
     word: z
@@ -52,11 +56,20 @@ export function TapWord() {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    const r = CompareLetter(lettersBase, values.word, winningWords);
+    console.log("compare", r);
+    if (r) {
+      // ajoute le mot au local storage
+      addWinningWord(values.word);
+    }
+    form.reset();
   }
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 flex flex-row"
+      >
         <FormField
           control={form.control}
           name="word"
@@ -67,13 +80,20 @@ export function TapWord() {
                 <Input
                   placeholder="something ..."
                   {...field}
-                  className="border-none border-b-2 border-gray-400 text-7xl text-center h-28"
+                  className=" border-b-8 border-gray-400 rounded-none shadow-none  text-4xl font-semibold text-center h-28 uppercase"
                 />
               </FormControl>
               <FormDescription>Press Enter pour envoyer</FormDescription>
               <FormMessage />
             </FormItem>
           )}
+        />
+        <Image
+          src="/keyenter.png"
+          width={100}
+          height={100}
+          alt={"key enter"}
+          className="animate-bounce"
         />
       </form>
     </Form>

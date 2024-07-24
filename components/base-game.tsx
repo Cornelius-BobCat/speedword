@@ -1,16 +1,22 @@
-import { createletter } from "@/app/actions/shuffle-letter.action";
+import { Createletter } from "@/app/actions/shuffle-letter.action";
 import React, { useEffect, useState } from "react";
 import { Decompte } from "./decompte";
 import { TapWord } from "./tap-word";
+import { useLettersStore } from "@/store/store";
+import { useStartStore } from "@/store/store";
+import { set } from "zod";
+import { WinningWords } from "./winningWords";
 
 export const BaseGame = () => {
-  const [lettersBase, setLettersBase] = useState<string[]>([]);
-
-  // on commence le jeu , le bouton "start" est cliqué
+  const { lettersBase, setLettersBase } = useLettersStore();
+  const { start } = useStartStore();
   useEffect(() => {
-    // creation du jeu de letter
-    setLettersBase(createletter());
-  }, []);
+    if (start) {
+      setLettersBase(Createletter());
+    }
+  }, [start, setLettersBase]);
+
+  console.log("lettersBase", lettersBase);
 
   return (
     <div className="flex flex-row w-full h-screen justify-center items-center">
@@ -23,14 +29,18 @@ export const BaseGame = () => {
           ))}
         </div>
       </div>
-      <div className="w-1/2 flex flex-col">
+      <div className="w-1/2 flex flex-col justify-between items-start">
         <div>
-          <Decompte />
+          <div>
+            <Decompte />
+          </div>
+          <div>
+            <TapWord />
+          </div>
         </div>
         <div>
-          <TapWord />
+          <WinningWords />
         </div>
-        <div>Mot tapé valide</div>
       </div>
     </div>
   );
