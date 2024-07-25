@@ -30,8 +30,9 @@ export const BaseGame = () => {
             <X size={40} />
           </button>
         </div>
-        <div className="w-9/12 justify-center mx-auto">
+        <div className="relative w-9/12 justify-center mx-auto">
           <div className="grid grid-cols-4 text-7xl items-center">
+            <div className="absolute top-5 left-5 h-screen w-full"></div>
             {lettersBase.map((letter, index) => (
               <div
                 key={index}
