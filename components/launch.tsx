@@ -27,8 +27,17 @@ export const Launch = () => {
     // reset la liste des mots gagnants
     resetWinningWords();
   };
-  const words = ["launch", "start", "lancer", "zahájení", "llançament"];
-  const more = UseTypingSimulation(words);
+  const words = [
+    "pseudo",
+    "franck",
+    "camille",
+    "pierre",
+    "pseudo",
+    "emilie",
+    "jacques",
+    "sophie",
+  ];
+  const more = UseTypingSimulation(words, 100);
   return (
     <>
       <div className="w-full h-screen absolute inset-0 bg-black  z-10">
@@ -55,7 +64,7 @@ export const Launch = () => {
         )}
         <Input
           value={pseudo}
-          placeholder="pseudo"
+          placeholder={more}
           className="w-3/12  my-4  text-3xl bg-white p-10 rounded-full text-center uppercase text-pink-600 font-extrabold"
           onChange={(e) => setPseudo(e.target.value)}
         />
