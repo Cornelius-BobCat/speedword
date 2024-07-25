@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
  * Retrieves the top scores from the database.
  * @returns {Promise<Array<Object>>} An array of objects representing the top scores.
  */
-export const GetScore = async () => {
+export async function GetScore() {
   try {
     const topScores = await db.player.findMany({
       orderBy: {
@@ -22,4 +22,4 @@ export const GetScore = async () => {
     );
     return [];
   }
-};
+}

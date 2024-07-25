@@ -1,5 +1,3 @@
-"use serveur";
-
 import Link from "next/link";
 import { GetScore } from "../actions/getscore.action";
 
