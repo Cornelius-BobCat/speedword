@@ -55,7 +55,6 @@ export default function Page() {
             key={index}
             className="flex justify-between bg-black/50 text-white p-2"
           >
-            {index > 3 && <div></div>}
             {index == 0 && <div>🏆</div>}
             {index == 1 && <div>🥈</div>}
             {index == 2 && <div>🥉</div>}
