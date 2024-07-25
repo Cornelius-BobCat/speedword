@@ -58,6 +58,13 @@ export default function Page() {
             {index == 0 && <div>🏆</div>}
             {index == 1 && <div>🥈</div>}
             {index == 2 && <div>🥉</div>}
+            {index == 3 && <div>🚀</div>}
+            {index == 4 && <div>🪃</div>}
+            {index == 5 && <div>🏈</div>}
+            {index == 6 && <div>🍑</div>}
+            {index == 7 && <div>🐥</div>}
+            {index == 8 && <div>🐶</div>}
+            {index == 9 && <div>🐷</div>}
             <div className="font-bold">{score.pseudo}</div>
 
             <div>{score.score} pts</div>
