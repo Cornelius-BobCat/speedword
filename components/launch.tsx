@@ -70,14 +70,14 @@ export const Launch = () => {
         />
         <div
           onClick={handleChangeStart}
-          className="rounded-lg bg-pink-500 hover:bg-pink-900 text-7xl font-extrabold text-white p-4 text-center hover:cursor-pointer"
+          className="my-5 rounded-full bg-red-500 shadow-md shadow-black hover:bg-red-600 text-7xl font-extrabold text-white p-4 text-center hover:cursor-pointer"
         >
           {"🎲 "}
           LAUNCH
         </div>
         <div className="text-2xl mt-4 text-white bg-black rounded-lg py-5 px-10 hover:bg-black/50">
           <Link href="score" className="font-extrabold">
-            score 🎯
+            score 🎯 & rules 📜
           </Link>
         </div>
       </div>{" "}
