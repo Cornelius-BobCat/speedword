@@ -87,7 +87,7 @@ export function TapWord() {
                 <Input
                   placeholder="something ..."
                   {...field}
-                  className=" bg-white border-b-8 border-gray-400 rounded-none shadow-none  text-4xl font-semibold text-center h-28 uppercase"
+                  className=" bg-white border-b-8 border-gray-400 rounded-full shadow-none  text-4xl font-semibold text-center h-28 uppercase"
                 />
               </FormControl>
               <FormDescription>Press Enter</FormDescription>
