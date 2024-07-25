@@ -13,6 +13,7 @@ export const GetScore = async () => {
         score: "desc",
       },
     });
+    console.log("Top scores:", topScores);
     return topScores;
   } catch (error) {
     console.error(
