@@ -6,23 +6,32 @@ import { useNumberStore } from "@/store/store";
 import { useStartStore } from "@/store/store";
 import { useWinningWordsStore } from "@/store/store";
 import { usePseudoStore } from "@/store/store";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 
 export const Decompte = () => {
   const { value, decrement, setValue } = useNumberStore();
   const { start, toggleStart } = useStartStore();
   const { winningWords, resetWinningWords } = useWinningWordsStore();
   const { pseudo } = usePseudoStore();
+
+  useEffect(() => {
+    // remove les mots gagnants lors du premier rendu
+    resetWinningWords();
+  }, []);
+
   useEffect(() => {
     if (value <= 0) {
-      toggleStart();
-      resetWinningWords();
-      setValue(60.0);
+      // Sauvegarde le pseudo et le nombre de mots gagnants
       Save(pseudo, winningWords.length);
+      // Remet la valeur à 60
+      setValue(60.0);
+      // inverse le sens de la partie
+      toggleStart();
     }
   }, [value, toggleStart, setValue, resetWinningWords]);
 
   useEffect(() => {
+    // Crée un interval pour décrémenter la valeur toutes les secondes
     let interval: NodeJS.Timeout | null = null;
 
     if (start) {

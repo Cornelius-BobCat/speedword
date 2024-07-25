@@ -1,22 +1,20 @@
 import { Createletter } from "@/app/actions/shuffle-letter.action";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Decompte } from "./decompte";
 import { TapWord } from "./tap-word";
 import { useLettersStore } from "@/store/store";
 import { useStartStore } from "@/store/store";
-import { set } from "zod";
 import { WinningWords } from "./winningWords";
 
 export const BaseGame = () => {
   const { lettersBase, setLettersBase } = useLettersStore();
   const { start } = useStartStore();
   useEffect(() => {
+    // On crée les lettres de base
     if (start) {
       setLettersBase(Createletter());
     }
   }, [start, setLettersBase]);
-
-  console.log("lettersBase", lettersBase);
 
   return (
     <div className="flex flex-row w-full h-screen justify-center items-center">

@@ -9,7 +9,7 @@ export const Save = async (pseudo: string, score: number) => {
 
     if (player) {
       // Comparer le score actuel avec le nouveau score
-      console.log(score, player.score);
+      console.log("nouveau score >", score, "ancien score >", player.score);
       if (score > player.score) {
         // Mettre à jour le score si le nouveau est plus élevé
         await db.player.update({

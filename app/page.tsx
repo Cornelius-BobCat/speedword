@@ -5,6 +5,7 @@ import { Launch } from "@/components/launch";
 import { useStartStore } from "@/store/store";
 
 export default function Home() {
+  // Récupère le statut du jeu et la fonction pour le modifier
   const { start, toggleStart } = useStartStore();
 
   return (

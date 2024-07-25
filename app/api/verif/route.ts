@@ -1,16 +1,14 @@
-// app/api/verif/route.ts
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 
-// Variable pour stocker le cache
 let wordCache: Set<string> | null = null;
 const cacheFilePath = path.join(process.cwd(), "public", "ods6.txt");
 
 async function loadWordCache() {
   if (!wordCache) {
     try {
-      const data = fs.readFileSync(cacheFilePath, "utf-8");
+      const data = await fs.readFile(cacheFilePath, "utf-8");
       wordCache = new Set(
         data.split("\n").map((line) => line.trim().toUpperCase())
       );
@@ -26,15 +24,23 @@ export async function GET(req: NextRequest) {
   const url = new URL(req.url);
 
   // Récupérer le paramètre 'word' depuis l'URL de la requête
-  const word = (url.searchParams.get("word") as string).toUpperCase();
-  console.log(word);
+  const word = (url.searchParams.get("word") || "").toUpperCase().trim();
+
+  if (!word) {
+    return NextResponse.json(
+      { error: "Invalid word parameter" },
+      { status: 400 }
+    );
+  }
 
   try {
-    await loadWordCache(); // Charger le cache si nécessaire
+    // Charger le cache si nécessaire
+    await loadWordCache();
 
     // Vérifier si le mot est dans le cache
     const isWordValid = wordCache?.has(word) || false;
-    console.log(isWordValid);
+    console.log(`Word: ${word}, IsValid: ${isWordValid}`);
+
     return NextResponse.json({ content: isWordValid });
   } catch (error) {
     console.error("Error processing request:", error);
