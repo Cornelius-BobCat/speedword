@@ -55,7 +55,14 @@ export default function Page() {
             key={index}
             className="flex justify-between bg-black/50 text-white p-2"
           >
-            <div className="font-bold">{score.pseudo}</div>
+            {index > 3 && <div></div>}
+            <div className="font-bold">
+              {index == 1 && <div>🏆</div>}
+              {index == 2 && <div>🥈</div>}
+              {index == 3 && <div>🥉</div>}
+
+              {score.pseudo}
+            </div>
 
             <div>{score.score} pts</div>
           </div>

@@ -65,7 +65,7 @@ export const Launch = () => {
         <Input
           value={pseudo}
           placeholder={more}
-          className="w-3/12  my-4  text-3xl bg-white p-10 rounded-full text-center uppercase text-pink-600 font-extrabold"
+          className="w-3/12  my-4  text-3xl bg-white p-10 rounded-full text-center  text-pink-600 font-extrabold"
           onChange={(e) => setPseudo(e.target.value)}
         />
         <div
