@@ -78,6 +78,15 @@ export const Decompte = () => {
           className="rounded-full"
         />
       )}
+      {value <= 15 && value >= 5 && (
+        <Image
+          src="/homer.gif"
+          alt="moquerie"
+          width={200}
+          height={80}
+          className="rounded-full"
+        />
+      )}
       <span>
         {start ? (value > 0 ? value.toFixed(1) : "0.0") : "Speed Words"}
       </span>

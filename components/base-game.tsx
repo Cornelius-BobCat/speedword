@@ -32,8 +32,8 @@ export const BaseGame = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/2 flex flex-col justify-between items-start">
-        <div>
+      <div className="w-1/2 py-5 flex flex-col h-screen justify-between items-start">
+        <div className="h-1/2">
           <div>
             <Decompte />
           </div>
@@ -41,7 +41,7 @@ export const BaseGame = () => {
             <TapWord />
           </div>
         </div>
-        <div>
+        <div className="h-1/2 overflow-y-auto w-full">
           <WinningWords />
         </div>
       </div>

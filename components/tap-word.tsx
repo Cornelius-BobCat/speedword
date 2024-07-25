@@ -18,11 +18,14 @@ import { Input } from "@/components/ui/input";
 import { CompareLetter } from "@/app/actions/compare-letter.action";
 import Image from "next/image";
 import { useState } from "react";
+import { useNumberStore } from "@/store/store";
 
 export function TapWord() {
   const { lettersBase } = useLettersStore();
   const { winningWords, addWinningWord } = useWinningWordsStore();
   const [scoreInGame, setScoreInGame] = useState(0);
+  const { value, setValue } = useNumberStore();
+
   // Schéma Zod pour la validation
   const formSchema = z.object({
     word: z
@@ -64,6 +67,7 @@ export function TapWord() {
       // ajoute le mot au local storage
       addWinningWord(values.word.toUpperCase());
       setScoreInGame(scoreInGame + 1);
+      setValue(value + 1);
     }
     form.reset();
   }

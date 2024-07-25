@@ -25,13 +25,30 @@ export default function Page() {
   return (
     <>
       <div className="w-3/12 mx-auto text-2xl items-center text-center space-y-3 z-30">
-        <div className="py-10">
-          <Link
-            href="/"
-            className="text-2xl  text-white bg-black rounded-lg py-5 px-10 hover:bg-black/50"
-          >
-            🎯 GO BACK
-          </Link>
+        <div className="my-10">
+          <div className="my-10">
+            <Link
+              href="/"
+              className="text-2xl  text-white bg-black rounded-lg p-5 hover:bg-black/50"
+            >
+              🎯 GO BACK
+            </Link>
+          </div>
+          <div className="text-xs italic relative">
+            clique sur LAUNCH pour commencer une nouvelle partie
+            <br />
+            - tu as 60 secondes pour trouver un maximum de mots
+            <br />
+            - tu peux taper les mots en majuscule ou minuscule
+            <br />
+            - les mots doivent être en français
+            <br />
+            - les mots doivent être dans le dictionnaire
+            <br />
+            - les mots doivent être différents
+            <br />- les mots doivent être composés {"d'au"} moins 2 lettres
+            <br />- si tu trouve un mot tu rajoute 1 secondes au compteur
+          </div>
         </div>
         {scores.map((score, index) => (
           <div
