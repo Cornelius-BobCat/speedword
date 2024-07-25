@@ -1,15 +1,26 @@
+"use client";
 import Link from "next/link";
 import { GetScore } from "../actions/getscore.action";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+
 /**
  * Renders the Page component.
  * Retrieves the score data and displays it in a formatted list.
  * @returns The rendered Page component.
  */
 
-export default async function Page() {
-  const res = await GetScore();
-  console.log(res);
+export default function Page() {
+  const [scores, setScores] = useState<
+    { id: string; pseudo: string; score: number }[]
+  >([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await GetScore();
+      setScores(res);
+    }
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -22,7 +33,7 @@ export default async function Page() {
             🎯 GO BACK
           </Link>
         </div>
-        {res.map((score, index) => (
+        {scores.map((score, index) => (
           <div
             key={index}
             className="flex justify-between bg-black/50 text-white p-2"
