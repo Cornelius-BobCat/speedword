@@ -18,6 +18,7 @@ export const Decompte = () => {
   useEffect(() => {
     // remove les mots gagnants lors du premier rendu
     resetWinningWords();
+    setValue(60.0);
   }, []);
 
   useEffect(() => {
