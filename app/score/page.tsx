@@ -14,16 +14,6 @@ export default async function Page() {
 
   return (
     <>
-      <div className="w-full h-screen absolute inset-0 bg-black  z-10">
-        <Image
-          src="/fond.jpeg"
-          alt="Fond"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          className="z-0"
-        />
-      </div>
       <div className="w-3/12 mx-auto text-2xl items-center text-center space-y-3 z-30">
         <div className="py-10">
           <Link
