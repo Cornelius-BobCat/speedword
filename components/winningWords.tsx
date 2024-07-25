@@ -1,17 +1,21 @@
 import { useWinningWordsStore } from "@/store/store";
 import { CircleCheck } from "lucide-react";
+
 export const WinningWords = () => {
   const { winningWords } = useWinningWordsStore();
+
   return (
-    <div className="flex flex-col">
+    <div className="columns-2 md:columns-3 gap-4">
       {winningWords.map((word, index) => (
-        <h3
-          className="scroll-m-20 text-2xl font-semibold tracking-tight space-x-2 items-center flex"
+        <div
+          className="mb-2 flex items-center space-x-2 break-inside-avoid"
           key={index}
         >
-          <CircleCheck className="text-green-500 " />{" "}
-          <span>{word.toUpperCase()}</span>
-        </h3>
+          <CircleCheck className="text-green-500" />
+          <span className="text-2xl font-semibold tracking-tight">
+            {word.toUpperCase()}
+          </span>
+        </div>
       ))}
     </div>
   );
