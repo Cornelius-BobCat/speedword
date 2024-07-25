@@ -8,6 +8,7 @@ import { GetScore } from "../actions/getscore.action";
  */
 export default async function Page() {
   const res = await GetScore();
+  console.log("Scores:", res);
 
   return (
     <div className="w-3/12 mx-auto text-2xl items-center text-center space-y-3 ">
