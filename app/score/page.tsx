@@ -6,11 +6,9 @@ import Image from "next/image";
  * Retrieves the score data and displays it in a formatted list.
  * @returns The rendered Page component.
  */
-export const revalidate = 1;
 
 export default async function Page() {
   const res = await GetScore();
-  console.log("Scores:", res);
 
   return (
     <>
