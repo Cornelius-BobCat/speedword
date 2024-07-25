@@ -6,6 +6,7 @@ import { useNumberStore } from "@/store/store";
 import { useStartStore } from "@/store/store";
 import { useWinningWordsStore } from "@/store/store";
 import { usePseudoStore } from "@/store/store";
+import Image from "next/image";
 import { use, useEffect } from "react";
 
 export const Decompte = () => {
@@ -57,8 +58,29 @@ export const Decompte = () => {
   }, [start, value, decrement]);
 
   return (
-    <div className="text-[130px] font-extrabold animate-pulse">
-      {start ? (value > 0 ? value.toFixed(1) : "0.0") : "Speed Words"}
+    <div
+      className={` flex w-full text-[130px] font-extrabold animate-pulse ${
+        start
+          ? value > 20
+            ? "text-black"
+            : value > 10
+            ? "text-orange-500"
+            : "text-red-700"
+          : ""
+      }`}
+    >
+      {value <= 5 && (
+        <Image
+          src="/bob.gif"
+          alt="moquerie"
+          width={200}
+          height={80}
+          className="rounded-full"
+        />
+      )}
+      <span>
+        {start ? (value > 0 ? value.toFixed(1) : "0.0") : "Speed Words"}
+      </span>
     </div>
   );
 };
