@@ -21,3 +21,4 @@ model Player {
   pseudo    String  @unique
   score     Int
 }
+

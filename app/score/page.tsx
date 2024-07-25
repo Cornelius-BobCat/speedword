@@ -48,10 +48,7 @@ export default function Page() {
             - les mots doivent être différents
             <br />- les mots doivent être composés {"d'au"} moins 2 lettres
             <br />- si tu trouve un mot tu rajoute 1 secondes au compteur
-            <br />
-            - si tu trouves un mot tu gagnes 1 point
-            <br />
-            <br />
+            <br />- si tu trouves un mot tu gagnes 1 point
             <b>
               Les pseudos sont uniques et les scores sont triés par ordre
               décroissant. <br />
