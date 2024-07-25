@@ -70,7 +70,7 @@ export const Launch = () => {
         />
         <div
           onClick={handleChangeStart}
-          className="my-5 rounded-full bg-red-500 shadow-md shadow-black hover:bg-red-600 text-7xl font-extrabold text-white p-4 text-center hover:cursor-pointer"
+          className="my-5 px-10 rounded-full bg-red-500 shadow-md shadow-black hover:bg-red-600 text-7xl font-extrabold text-white p-4 text-center hover:cursor-pointer"
         >
           {"🎲 "}
           LAUNCH
