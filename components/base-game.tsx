@@ -5,20 +5,31 @@ import { TapWord } from "./tap-word";
 import { useLettersStore } from "@/store/store";
 import { useStartStore } from "@/store/store";
 import { WinningWords } from "./winningWords";
+import { X } from "lucide-react";
 
 export const BaseGame = () => {
   const { lettersBase, setLettersBase } = useLettersStore();
-  const { start } = useStartStore();
+  const { start, toggleStart } = useStartStore();
   useEffect(() => {
     // On crée les lettres de base
     if (start) {
       setLettersBase(Createletter());
     }
   }, [start, setLettersBase]);
-
+  const handleCloseGame = () => {
+    toggleStart();
+  };
   return (
     <div className="flex flex-row w-full h-screen justify-center items-center">
       <div className="w-1/2">
+        <div className="absolute top-5 left-5">
+          <button
+            onClick={handleCloseGame}
+            className="bg-amber-600 text-white p-2 rounded-md hover:bg-amber-700 hover:animate-spin hover:rounded-xl"
+          >
+            <X size={40} />
+          </button>
+        </div>
         <div className="w-9/12 justify-center mx-auto">
           <div className="grid grid-cols-4 text-7xl items-center">
             {lettersBase.map((letter, index) => (
