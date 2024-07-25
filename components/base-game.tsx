@@ -21,12 +21,17 @@ export const BaseGame = () => {
   return (
     <div className="flex flex-row w-full h-screen justify-center items-center">
       <div className="w-1/2">
-        <div className="grid grid-cols-4 text-7xl items-center h-screen">
-          {lettersBase.map((letter, index) => (
-            <div key={index} className="mx-2">
-              {letter}
-            </div>
-          ))}
+        <div className="w-9/12 justify-center mx-auto">
+          <div className="grid grid-cols-4 text-7xl items-center">
+            {lettersBase.map((letter, index) => (
+              <div
+                key={index}
+                className="mx-2 my-2 py-10 bg-amber-100/50 rounded-xl text-center"
+              >
+                <span className="text-amber-600 font-extrabold">{letter}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="w-1/2 flex flex-col justify-between items-start">
